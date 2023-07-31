@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <img src="./src/Logo/logo.PNG" alt="logo" width="140"  height="auto" />
+  <img src="./src/Assets/logo.png" alt="logo" width="140"  height="auto" />
   <br/>
 
   <h3><b>Space Travellers Hub</b></h3>
