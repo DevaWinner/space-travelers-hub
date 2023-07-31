@@ -6,6 +6,7 @@ import './App.css';
 import logo from './Assets/logo.png';
 
 import Rockets from './components/Rockets';
+import Profile from './components/Profile';
 
 const App = () => (
   <Router>
@@ -16,13 +17,13 @@ const App = () => (
       <nav>
         <NavLink to="/Rockets" activeClassName="active"> Rockets </NavLink>
         <NavLink to="/" activeClassName="active" />
-        <NavLink to="/" activeClassName="active" />
+        <NavLink to="/Profile" activeClassName="active"> My Profile </NavLink>
       </nav>
     </header>
     <Routes>
       <Route exact path="/Rockets" component={Rockets} />
       <Route exact path="/" component="" />
-      <Route exact path="/" component="" />
+      <Route exact path="/Profile" component={Profile} />
     </Routes>
   </Router>
 );
