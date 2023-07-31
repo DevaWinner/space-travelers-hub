@@ -1,17 +1,24 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Route, NavLink,
+} from 'react-router-dom';
 
-function App() {
-  return (
-    <>
-      <div className="all-container">
-        <Routes>
-          <Route path="/" element={<h />} />
-          <Route path="/c" element={<c />} />
-        </Routes>
+const App = () => (
+  <Router>
+    <header>
+      <div className="logo">
+        <img src="/logo.png" alt="App Logo" />
       </div>
-    </>
-  );
-}
+      <nav>
+        <NavLink to="/" activeClassName="active" />
+        <NavLink to="/" activeClassName="active" />
+        <NavLink to="/" activeClassName="active" />
+      </nav>
+    </header>
+    <Route exact path="/" component="" />
+    <Route exact path="/" component="" />
+    <Route exact path="/" component="" />
+  </Router>
+);
 
 export default App;
