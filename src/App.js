@@ -22,9 +22,9 @@ const App = () => (
       </nav>
     </header>
     <Routes>
-      <Route exact path="/Rockets" component={Rockets} />
-      <Route exact path="/Missions" component={Missions} />
-      <Route exact path="/Profile" component={Profile} />
+      <Route exact path="/Rockets" element={<Rockets />} />
+      <Route exact path="/Missions" element={<Missions />} />
+      <Route exact path="/Profile" element={<Profile />} />
     </Routes>
   </Router>
 );
