@@ -136,13 +136,18 @@ Your app is ready to be deployed!
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Author1**
+👤 **Diana Beki**
 
 - GitHub: [@githubhandle](https://github.com/DianaBeki)
 - Twitter: [@twitterhandle](https://twitter.com/home)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/diana-beki-b49684230/)
 
-👤 **Author2**
+👤 **Aniekan Winner**
+
+- GitHub: [@githubhandle](https://github.com/DevaWinner)
+- Twitter: [@twitterhandle](https://twitter.com/WinnerDevq)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/winnera/)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
