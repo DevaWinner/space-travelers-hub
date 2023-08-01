@@ -10,27 +10,38 @@ const Rockets = () => {
     dispatch(fetchRocketsData());
   }, [dispatch]);
 
-  if (rocketsData.loading) return <p className="fetchStatus">Loading...</p>;
-  if (rocketsData.errors) return <p className="error">Error loading the rockets</p>;
+  if (!rocketsData) {
+    return <p className="fetchStatus">Loading...</p>;
+  }
+
+  if (rocketsData.errors) {
+    return <p className="error">Error loading the rockets</p>;
+  }
+
   return (
     <ul className="rocketsList">
       {rocketsData.value.map((e, i) => (
-        <>
-          key=
-          {e.id}
-          id=
-          {e.id}
-          indexNo=
-          {i}
-          title=
-          {e.name}
-          description=
-          {e.description}
-          img=
-          {e.flickrImages[0]}
-          reserved=
-          {e.reserved}
-        </>
+        <React.Fragment key={e.id}>
+          <li>
+            id=
+            {e.id}
+            {' '}
+            indexNo=
+            {i}
+            {' '}
+            title=
+            {e.name}
+            {' '}
+            description=
+            {e.description}
+            {' '}
+            img=
+            {e.flickrImages[0]}
+            {' '}
+            reserved=
+            {e.reserved}
+          </li>
+        </React.Fragment>
       ))}
     </ul>
   );
