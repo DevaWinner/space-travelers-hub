@@ -19,19 +19,21 @@ const Rockets = () => {
   }
 
   return (
-    <ul className="rocketsList">
-      {rocketsData.value.map((e) => (
-        <li key={e.id}>
-          {e.flickrImages[0] && <img src={e.flickrImages[0]} alt={e.name} />}
-          <h2>{e.name}</h2>
-          <p>
-            {e.reserved && <span>Reserved</span>}
-            {' '}
-            {e.description}
-          </p>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className="rocketsList">
+        {rocketsData.value.map((e) => (
+          <li key={e.id}>
+            {e.flickrImages[0] && <img src={e.flickrImages[0]} alt={e.name} />}
+            <h2>{e.name}</h2>
+            <p>
+              {e.reserved && <span>Reserved</span>}
+              {' '}
+              {e.description}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
