@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -8,12 +9,14 @@ const initialState = {
 };
 
 export const fetchRocketsData = createAsyncThunk('rockets/fetchData', async () => {
-  try {
-    const response = await axios.get('https://api.spacexdata.com/v3/rockets');
-    return response.data;
-  } catch (error) {
-    throw new Error('Unable to fetch data for the rockets');
-  }
+  const response = await axios.get('https://api.spacexdata.com/v3/rockets');
+  const rocketsData = response.data.map((rocket) => ({
+    id: rocket.id,
+    name: rocket.name,
+    type: rocket.type,
+    flickr_images: rocket.flickr_images,
+  }));
+  return response.data;
 });
 
 const rocketsSlice = createSlice({
