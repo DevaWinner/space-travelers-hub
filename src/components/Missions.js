@@ -1,24 +1,37 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Table } from 'react-bootstrap';
-import { fetchMissionsData } from '../redux/missions/missionsSlice';
+import {
+  Table,
+  Spinner, Alert,
+} from 'react-bootstrap';
+import { fetchMissionsData, joinMission } from '../redux/missions/missionsSlice';
 
 const MissionTable = () => {
+  const dispatch = useDispatch();
   const missionsData = useSelector((state) => state.missions.missionsData);
   const missionsStatus = useSelector((state) => state.missions.missionsStatus);
-  const dispatch = useDispatch();
+  const error = useSelector((state) => state.missions.error);
 
   useEffect(() => {
     dispatch(fetchMissionsData());
   }, [dispatch]);
 
   if (missionsStatus === 'loading') {
-    return <div>Loading...</div>;
+    return <Spinner animation="border" role="status" className="mt-4" />;
   }
 
   if (missionsStatus === 'failed') {
-    return <div>Error: Unable to fetch data for the missions</div>;
+    return (
+      <Alert variant="danger" className="mt-4">
+        Error:
+        {error}
+      </Alert>
+    );
   }
+
+  const handleJoinMission = (missionId) => {
+    dispatch(joinMission(missionId));
+  };
 
   return (
     <Table striped bordered hover>
@@ -37,7 +50,12 @@ const MissionTable = () => {
               <td>{mission.mission_name}</td>
               <td>{mission.description}</td>
               <td>Upcoming</td>
-              <td><button type="button">Join Mission</button></td>
+              <td>
+                <button type="button" onClick={() => handleJoinMission(mission.mission_id)}>
+                  Join Mission
+                </button>
+              </td>
+
             </tr>
           ))}
       </tbody>
