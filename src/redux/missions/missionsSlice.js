@@ -7,7 +7,6 @@ const initialState = {
   missionsError: null,
 };
 
-// Async Thunk: fetchMissionsData
 export const fetchMissionsData = createAsyncThunk('missions/fetchData', async () => {
   try {
     const response = await axios.get('https://api.spacexdata.com/v3/missions');
@@ -22,10 +21,8 @@ export const fetchMissionsData = createAsyncThunk('missions/fetchData', async ()
   }
 });
 
-// New action type
 const JOIN_MISSION = 'missions/joinMission';
 
-// New action creator function
 export const joinMission = (missionId) => ({
   type: JOIN_MISSION,
   payload: missionId,
@@ -48,10 +45,8 @@ const missionsSlice = createSlice({
         state.missionsStatus = 'failed';
         state.missionsError = action.error.message;
       })
-      // Handle the JOIN_MISSION action
       .addCase(JOIN_MISSION, (state, action) => {
         const selectedMissionId = action.payload;
-        // Create a new array of missions with the updated selected mission
         state.missionsData = state.missionsData.map((mission) => (
           mission.mission_id === selectedMissionId
             ? { ...mission, reserved: true }
