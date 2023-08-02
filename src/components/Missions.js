@@ -45,8 +45,8 @@ const MissionTable = () => {
         </tr>
       </thead>
       <tbody>
-        {missionsData &&
-          missionsData.map((mission) => (
+        {missionsData
+          && missionsData.map((mission) => (
             <tr key={mission.mission_id}>
               <td>{mission.mission_name}</td>
               <td>{mission.description}</td>
