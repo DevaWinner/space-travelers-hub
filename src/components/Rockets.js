@@ -1,40 +1,50 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  Card, Spinner, Alert, Row, Col,
+} from 'react-bootstrap';
 import { fetchRocketsData } from '../redux/rockets/rocketsSlice';
 
-const Rockets = () => {
-  const rocketsData = useSelector((state) => state.rocketsList);
+const RocketList = () => {
   const dispatch = useDispatch();
+  const rocketsData = useSelector((state) => state.rockets.data);
+  const status = useSelector((state) => state.rockets.status);
+  const error = useSelector((state) => state.rockets.error);
 
   useEffect(() => {
     dispatch(fetchRocketsData());
   }, [dispatch]);
 
-  if (!rocketsData) {
-    return <p className="fetchStatus">Loading...</p>;
+  if (status === 'loading') {
+    return <Spinner animation="border" role="status" className="mt-4" />;
   }
 
-  if (rocketsData.errors) {
-    return <p className="error">Error loading the rockets</p>;
+  if (status === 'failed') {
+    return (
+      <Alert variant="danger" className="mt-4">
+        Error:
+        {error}
+      </Alert>
+    );
   }
 
   return (
-    <>
-      <ul className="rocketsList">
-        {rocketsData.value.map((e) => (
-          <li key={e.id}>
-            {e.flickrImages[0] && <img src={e.flickrImages[0]} alt={e.name} />}
-            <h2>{e.name}</h2>
-            <p>
-              {e.reserved && <span>Reserved</span>}
-              {' '}
-              {e.description}
-            </p>
-          </li>
+    <Row xs={1} sm={2} md={3} lg={4} className="g-4 mt-4">
+      {rocketsData
+        && rocketsData.map((rocket) => (
+          <Col key={rocket.id}>
+            <Card>
+              <Card.Img variant="left" src={rocket.flickr_images[0]} alt={rocket.name} />
+              <Card.Body>
+                <Card.Title>{rocket.name}</Card.Title>
+                <Card.Text>{rocket.description}</Card.Text>
+                <button type="button">Reserve Rocket</button>
+              </Card.Body>
+            </Card>
+          </Col>
         ))}
-      </ul>
-    </>
+    </Row>
   );
 };
 
-export default Rockets;
+export default RocketList;
