@@ -1,23 +1,32 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Table } from 'react-bootstrap';
+import {
+  Table,
+  Spinner, Alert,
+} from 'react-bootstrap';
 import { fetchMissionsData } from '../redux/missions/missionsSlice';
 
 const MissionTable = () => {
+  const dispatch = useDispatch();
   const missionsData = useSelector((state) => state.missions.missionsData);
   const missionsStatus = useSelector((state) => state.missions.missionsStatus);
-  const dispatch = useDispatch();
+  const error = useSelector((state) => state.missions.error);
 
   useEffect(() => {
     dispatch(fetchMissionsData());
   }, [dispatch]);
 
   if (missionsStatus === 'loading') {
-    return <div>Loading...</div>;
+    return <Spinner animation="border" role="status" className="mt-4" />;
   }
 
   if (missionsStatus === 'failed') {
-    return <div>Error: Unable to fetch data for the missions</div>;
+    return (
+      <Alert variant="danger" className="mt-4">
+        Error:
+        {error}
+      </Alert>
+    );
   }
 
   return (
