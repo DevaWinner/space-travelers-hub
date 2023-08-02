@@ -22,9 +22,15 @@ export const fetchMissionsData = createAsyncThunk('missions/fetchData', async ()
 });
 
 const JOIN_MISSION = 'missions/joinMission';
+const LEAVE_MISSION = 'missions/leaveMission';
 
 export const joinMission = (missionId) => ({
   type: JOIN_MISSION,
+  payload: missionId,
+});
+
+export const leaveMission = (missionId) => ({
+  type: LEAVE_MISSION,
   payload: missionId,
 });
 
@@ -50,6 +56,13 @@ const missionsSlice = createSlice({
         state.missionsData = state.missionsData.map((mission) => (
           mission.mission_id === selectedMissionId
             ? { ...mission, reserved: true }
+            : mission));
+      })
+      .addCase(LEAVE_MISSION, (state, action) => {
+        const selectedMissionId = action.payload;
+        state.missionsData = state.missionsData.map((mission) => (
+          mission.mission_id === selectedMissionId
+            ? { ...mission, reserved: false }
             : mission));
       });
   },
