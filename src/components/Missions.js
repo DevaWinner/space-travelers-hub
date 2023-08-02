@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  Table,
-  Spinner, Alert,
-} from 'react-bootstrap';
-import { fetchMissionsData, joinMission } from '../redux/missions/missionsSlice';
+import { Table, Spinner, Alert } from 'react-bootstrap';
+import { fetchMissionsData, joinMission, leaveMission } from '../redux/missions/missionsSlice';
 
 const MissionTable = () => {
   const dispatch = useDispatch();
@@ -33,6 +30,10 @@ const MissionTable = () => {
     dispatch(joinMission(missionId));
   };
 
+  const handleLeaveMission = (missionId) => {
+    dispatch(leaveMission(missionId));
+  };
+
   return (
     <Table striped bordered hover>
       <thead>
@@ -44,18 +45,23 @@ const MissionTable = () => {
         </tr>
       </thead>
       <tbody>
-        {missionsData
-          && missionsData.map((mission) => (
+        {missionsData &&
+          missionsData.map((mission) => (
             <tr key={mission.mission_id}>
               <td>{mission.mission_name}</td>
               <td>{mission.description}</td>
               <td>Upcoming</td>
               <td>
-                <button type="button" onClick={() => handleJoinMission(mission.mission_id)}>
-                  Join Mission
-                </button>
+                {mission.reserved ? (
+                  <button type="button" onClick={() => handleLeaveMission(mission.mission_id)}>
+                    Leave Mission
+                  </button>
+                ) : (
+                  <button type="button" onClick={() => handleJoinMission(mission.mission_id)}>
+                    Join Mission
+                  </button>
+                )}
               </td>
-
             </tr>
           ))}
       </tbody>
