@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -23,6 +22,8 @@ export const fetchRocketsData = createAsyncThunk('rockets/fetchData', async () =
   }
 });
 
+export const reserveRocket = createAsyncThunk('rockets/reserve', (rocketId) => rocketId);
+
 const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
@@ -39,6 +40,14 @@ const rocketsSlice = createSlice({
       .addCase(fetchRocketsData.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
+      })
+      .addCase(reserveRocket, (state, action) => {
+        const rocketId = action.payload;
+        const newState = state.data.map((rocket) => {
+          if (rocket.id !== rocketId) return rocket;
+          return { ...rocket, reserved: true };
+        });
+        state.data = newState;
       });
   },
 });
