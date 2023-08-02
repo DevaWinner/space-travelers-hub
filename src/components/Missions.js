@@ -4,7 +4,7 @@ import {
   Table,
   Spinner, Alert,
 } from 'react-bootstrap';
-import { fetchMissionsData } from '../redux/missions/missionsSlice';
+import { fetchMissionsData, joinMission } from '../redux/missions/missionsSlice';
 
 const MissionTable = () => {
   const dispatch = useDispatch();
@@ -29,6 +29,10 @@ const MissionTable = () => {
     );
   }
 
+  const handleJoinMission = (missionId) => {
+    dispatch(joinMission(missionId));
+  };
+
   return (
     <Table striped bordered hover>
       <thead>
@@ -46,7 +50,12 @@ const MissionTable = () => {
               <td>{mission.mission_name}</td>
               <td>{mission.description}</td>
               <td>Upcoming</td>
-              <td><button type="button">Join Mission</button></td>
+              <td>
+                <button type="button" onClick={() => handleJoinMission(mission.mission_id)}>
+                  Join Mission
+                </button>
+              </td>
+
             </tr>
           ))}
       </tbody>
