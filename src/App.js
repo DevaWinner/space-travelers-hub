@@ -5,7 +5,7 @@ import {
 import './App.css';
 import logo from './Assets/logo.png';
 
-import Rockets from './components/Rockets';
+import RocketList from './components/Rockets';
 import Missions from './components/Missions';
 import Profile from './components/Profile';
 
@@ -22,7 +22,7 @@ const App = () => (
       </nav>
     </header>
     <Routes>
-      <Route exact path="/Rockets" element={<Rockets />} />
+      <Route exact path="/Rockets" element={<RocketList />} />
       <Route exact path="/Missions" element={<Missions />} />
       <Route exact path="/Profile" element={<Profile />} />
     </Routes>
