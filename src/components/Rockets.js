@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   Card, Spinner, Alert, Row, Col,
 } from 'react-bootstrap';
-import { fetchRocketsData } from '../redux/rockets/rocketsSlice';
+import { fetchRocketsData, reserveRocket } from '../redux/rockets/rocketsSlice';
 
 const RocketList = () => {
   const dispatch = useDispatch();
@@ -14,6 +14,10 @@ const RocketList = () => {
   useEffect(() => {
     dispatch(fetchRocketsData());
   }, [dispatch]);
+
+  const handleReserveClick = (rocketId) => {
+    dispatch(reserveRocket(rocketId));
+  };
 
   if (status === 'loading') {
     return <Spinner animation="border" role="status" className="mt-4" />;
@@ -38,7 +42,10 @@ const RocketList = () => {
               <Card.Body>
                 <Card.Title>{rocket.name}</Card.Title>
                 <Card.Text>{rocket.description}</Card.Text>
-                <button type="button">Reserve Rocket</button>
+                <button type="button" onClick={() => handleReserveClick(rocket.id)}>Reserve Rocket</button>
+                {rocket.reserved && <p>Reserved</p>}
+                {' '}
+                {/* Display reserved status */}
               </Card.Body>
             </Card>
           </Col>

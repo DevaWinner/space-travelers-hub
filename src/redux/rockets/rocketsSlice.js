@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -16,11 +15,21 @@ export const fetchRocketsData = createAsyncThunk('rockets/fetchData', async () =
       name: rocket.rocket_name,
       description: rocket.description,
       flickr_images: rocket.flickr_images,
+      reserved: false, // Add reserved property
     }));
     return rocketsData;
   } catch (error) {
     throw new Error('Unable to fetch data for the rockets');
   }
+});
+
+export const reserveRocket = createAsyncThunk('rockets/reserve', (rocketId, { getState }) => {
+  const state = getState();
+  const newState = state.rockets.data.map((rocket) => {
+    if (rocket.id !== rocketId) return rocket;
+    return { ...rocket, reserved: true };
+  });
+  return newState;
 });
 
 const rocketsSlice = createSlice({
@@ -39,6 +48,9 @@ const rocketsSlice = createSlice({
       .addCase(fetchRocketsData.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
+      })
+      .addCase(reserveRocket.fulfilled, (state, action) => {
+        state.data = action.payload;
       });
   },
 });
