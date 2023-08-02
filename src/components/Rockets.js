@@ -43,6 +43,9 @@ const RocketList = () => {
                 <Card.Title>{rocket.name}</Card.Title>
                 <Card.Text>{rocket.description}</Card.Text>
                 <button type="button" onClick={() => handleReserveClick(rocket.id)}>Reserve Rocket</button>
+                {rocket.reserved && <p>Reserved</p>}
+                {' '}
+                {/* Display reserved status */}
               </Card.Body>
             </Card>
           </Col>
