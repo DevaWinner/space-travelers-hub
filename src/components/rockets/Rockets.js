@@ -17,12 +17,11 @@ const Rockets = () => {
   }, [dispatch, isDataFetched]);
 
   return (
-    <div className="ul-container">
-      <h2 className="Rocket-List">Rocket List</h2>
+    <div className="rocket-container">
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <ul className="list-container">
+        <ul>
           {rocketArr.map((rocket) => (
             <RocketList
               key={rocket.id}
