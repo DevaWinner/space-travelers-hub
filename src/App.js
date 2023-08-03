@@ -3,7 +3,7 @@ import Nav from './components/Nav';
 import Missions from './components/missions/MissionList';
 import Rockets from './components/rockets/Rockets';
 import Profile from './components/Profile';
-// import './App.css';
+import './App.css';
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import './styles/Profile.css';
+import './styles/Profile.css';
 
 /* eslint-disable max-len */
 const Profile = () => {
