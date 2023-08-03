@@ -1,0 +1,65 @@
+.profile-container {
+    display: flex;
+    gap: 10%  ;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 70vh;
+    padding: 1.5rem 3rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.mission-column {
+    width: 50%;
+}
+
+.mission-column h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.mission-column ul {
+  border: 3px solid var(--blue);
+  border-radius: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.mission-column li {
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.mission-column li:not(:last-child) {
+  border-bottom: 3px solid var(--blue);
+}
+
+.rocket-column {
+  width: 50%;
+}
+
+.rocket-column h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.rocket-column ul {
+border: 3px solid var(--blue);
+border-radius: 0.5rem;
+list-style: none;
+padding: 0;
+}
+
+.rocket-column li {
+padding: 1rem;
+font-size: 1.2rem;
+font-weight: 500;
+}
+
+.rocket-column li:not(:last-child) {
+border-bottom: 3px solid var(--blue);
+}
