@@ -50,7 +50,7 @@ const RocketList = () => {
                   {rocket.reserved ? 'Cancel Reservation' : 'Reserve Rocket'}
                 </button>
                 {rocket.reserved && <p>Reserved</p>}
-                {/* Display reserved status */}
+                {}
               </Card.Body>
             </Card>
           </Col>
