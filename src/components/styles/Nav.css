@@ -5,6 +5,7 @@ nav {
   padding: 0.5rem 1rem;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 5px solid var(--blue);
 }
 
 header {
@@ -48,7 +49,7 @@ nav ul {
   text-decoration: none;
 }
 
-.nav-ul li a:hover {
+.nav-ul li a:hover:not(.active) {
   color: #000;
 }
 
