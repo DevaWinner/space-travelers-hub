@@ -45,12 +45,18 @@ const RocketList = () => {
               <Card.Img variant="left" src={rocket.flickr_images[0]} alt={rocket.name} />
               <Card.Body>
                 <Card.Title>{rocket.name}</Card.Title>
-                <Card.Text>{rocket.description}</Card.Text>
-                <button type="button" onClick={() => handleReserveClick(rocket.id, rocket.reserved)}>
+                <Card.Text>
+                  {rocket.description}
+                  <span className={rocket.reserved ? 'reserved-badge' : ''}>
+                    {rocket.reserved ? 'Reserved' : ''}
+                  </span>
+                </Card.Text>
+                <button
+                  type="button"
+                  onClick={() => handleReserveClick(rocket.id, rocket.reserved)}
+                >
                   {rocket.reserved ? 'Cancel Reservation' : 'Reserve Rocket'}
                 </button>
-                {rocket.reserved && <p>Reserved</p>}
-                {/* Display reserved status */}
               </Card.Body>
             </Card>
           </Col>
