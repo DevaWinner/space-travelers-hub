@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './styles/Nav.css';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.PNG';
 
 const Nav = () => (
   <>
@@ -10,7 +10,7 @@ const Nav = () => (
         to="/"
       >
         <header className="navbar-header">
-          <img src={logo} alt="Logo" />
+          <img src={logo} alt="logo" />
           <h1 className="nav-heading">Space Travelers Hub</h1>
         </header>
       </NavLink>
@@ -32,12 +32,14 @@ const Nav = () => (
         <li className="nav-li">
           <NavLink
             to="/profile"
+            className="profile-link"
           >
             My Profile
           </NavLink>
         </li>
       </ul>
     </nav>
+    <hr />
   </>
 );
 

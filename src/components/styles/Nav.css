@@ -1,3 +1,30 @@
-p {
-  font-size: 16px;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 4rem;
+}
+
+.navbar-header {
+  display: flex;
+  gap: 7rem;
+}
+
+.nav-heading {
+  color: black;
+}
+
+.nav-ul {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+}
+
+.nav-li:hover {
+  text-decoration: underline;
+}
+
+.profile-link {
+  border-left: 1px solid black;
+  padding-left: 2rem;
 }
