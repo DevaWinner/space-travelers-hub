@@ -1,30 +1,63 @@
-.navbar {
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem 4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-header {
+header {
   display: flex;
-  gap: 7rem;
+  gap: 2rem;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+header img {
+  width: 70px;
+  height: auto;
 }
 
 .nav-heading {
-  color: black;
+  color: var(--black);
+  text-decoration: none;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin-right: 3%;
 }
 
 .nav-ul {
   display: flex;
+  gap: 2rem;
   list-style: none;
-  gap: 3rem;
 }
 
-.nav-li:hover {
+.nav-ul li a {
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+
+.nav-ul li a:hover {
+  color: #000;
+}
+
+.nav-ul li a.active {
   text-decoration: underline;
+  
 }
 
-.profile-link {
-  border-left: 1px solid black;
-  padding-left: 2rem;
+.nav-ul li:last-child {
+  border-left: 3px solid var(--blue);
+  padding-left: 1rem;
 }
