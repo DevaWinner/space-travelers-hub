@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   Card, Spinner, Alert, Row, Col,
 } from 'react-bootstrap';
-import { fetchRocketsData, reserveRocket } from '../redux/rockets/rocketsSlice';
+import { fetchRocketsData, reserveRocket, cancelReservation } from '../redux/rockets/rocketsSlice';
 
 const RocketList = () => {
   const dispatch = useDispatch();
@@ -15,8 +15,12 @@ const RocketList = () => {
     dispatch(fetchRocketsData());
   }, [dispatch]);
 
-  const handleReserveClick = (rocketId) => {
-    dispatch(reserveRocket(rocketId));
+  const handleReserveClick = (rocketId, reserved) => {
+    if (reserved) {
+      dispatch(cancelReservation(rocketId));
+    } else {
+      dispatch(reserveRocket(rocketId));
+    }
   };
 
   if (status === 'loading') {
@@ -42,9 +46,10 @@ const RocketList = () => {
               <Card.Body>
                 <Card.Title>{rocket.name}</Card.Title>
                 <Card.Text>{rocket.description}</Card.Text>
-                <button type="button" onClick={() => handleReserveClick(rocket.id)}>Reserve Rocket</button>
+                <button type="button" onClick={() => handleReserveClick(rocket.id, rocket.reserved)}>
+                  {rocket.reserved ? 'Cancel Reservation' : 'Reserve Rocket'}
+                </button>
                 {rocket.reserved && <p>Reserved</p>}
-                {' '}
                 {/* Display reserved status */}
               </Card.Body>
             </Card>

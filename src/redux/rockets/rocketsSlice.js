@@ -15,7 +15,7 @@ export const fetchRocketsData = createAsyncThunk('rockets/fetchData', async () =
       name: rocket.rocket_name,
       description: rocket.description,
       flickr_images: rocket.flickr_images,
-      reserved: false, // Add reserved property
+      reserved: false,
     }));
     return rocketsData;
   } catch (error) {
@@ -23,11 +23,20 @@ export const fetchRocketsData = createAsyncThunk('rockets/fetchData', async () =
   }
 });
 
-export const reserveRocket = createAsyncThunk('rockets/reserve', (rocketId, { getState }) => {
+export const reserveRocket = createAsyncThunk('rockets/reserve', async (rocketId, { getState }) => {
   const state = getState();
   const newState = state.rockets.data.map((rocket) => {
     if (rocket.id !== rocketId) return rocket;
     return { ...rocket, reserved: true };
+  });
+  return newState;
+});
+
+export const cancelReservation = createAsyncThunk('rockets/cancelReservation', async (rocketId, { getState }) => {
+  const state = getState();
+  const newState = state.rockets.data.map((rocket) => {
+    if (rocket.id !== rocketId) return rocket;
+    return { ...rocket, reserved: false };
   });
   return newState;
 });
@@ -50,6 +59,9 @@ const rocketsSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(reserveRocket.fulfilled, (state, action) => {
+        state.data = action.payload;
+      })
+      .addCase(cancelReservation.fulfilled, (state, action) => {
         state.data = action.payload;
       });
   },
