@@ -14,24 +14,24 @@ const RocketList = ({ rocket }) => {
     dispatch(leaveBooking(param));
   };
   return (
-    <li className="list" key={rocket.id}>
+    <li className="reserveList" key={rocket.id}>
       {rocket.flickr_images.length > 0 && (
         <img
-          className="list-img"
+          className="reserve-button"
           src={rocket.flickr_images[0]}
           alt={rocket.rocket_name}
         />
       )}
-      <div>
-        <h3>
+      <div className="wrapper">
+        <h3 className="reserve-button">
           {rocket.reserved ? (<span className="badge">Reserved</span>) : ''}
           {' '}
           {rocket.rocket_name}
         </h3>
-        <p>{rocket.description}</p>
+        <p className="reserve-button">{rocket.description}</p>
         <div>
           {rocket.reserved ? (
-            <button className="cancel-button" onClick={() => handleBooking(rocket.id)} type="button">
+            <button className="reserve-button cancel-button" onClick={() => handleBooking(rocket.id)} type="button">
               Cancel Reservation
             </button>
           ) : (

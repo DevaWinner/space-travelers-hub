@@ -24,7 +24,6 @@ const Missions = () => {
   };
 
   return (
-
     <div>
       {isLoading ? (
         <p>Loading...</p>
@@ -34,7 +33,8 @@ const Missions = () => {
             <tr>
               <th>Mission</th>
               <th>Description</th>
-              <th>Status</th>
+              <th className="status">Status</th>
+              <th className="space">&nbsp;</th>
             </tr>
           </thead>
           <tbody>
@@ -51,7 +51,6 @@ const Missions = () => {
       )}
       ;
     </div>
-
   );
 };
 

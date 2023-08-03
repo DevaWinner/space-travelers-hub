@@ -9,14 +9,14 @@ const Mission = ({ mission, handleJoinMission, handleLeaveMission }) => (
       {mission.reserved ? (
         <span className="active-member" type="button">Active Member</span>
       ) : (
-        <span className="member" type="button">NOT A MEMBER</span>
+        <span className="not-member" type="button">NOT A MEMBER</span>
       )}
     </td>
     <td className="btn-td">
       {mission.reserved ? (
-        <button className="leave" onClick={() => handleLeaveMission(mission.mission_id)} type="button">Leave Mission</button>
+        <button className="btn-leave" onClick={() => handleLeaveMission(mission.mission_id)} type="button">Leave Mission</button>
       ) : (
-        <button className="join" onClick={() => handleJoinMission(mission.mission_id)} type="button">Join Mission</button>
+        <button className="btn-join" onClick={() => handleJoinMission(mission.mission_id)} type="button">Join Mission</button>
       )}
     </td>
   </tr>
