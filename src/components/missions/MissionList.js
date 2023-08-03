@@ -29,12 +29,12 @@ const Missions = () => {
         <p>Loading...</p>
       ) : (
         <table className="missions-table">
-          <thead className="missions-table-header">
+          <thead className="table-header">
             <tr>
               <th>Mission</th>
               <th>Description</th>
-              <th className="status">Status</th>
-              <th className="space">&nbsp;</th>
+              <th>Status</th>
+              <th>{}</th>
             </tr>
           </thead>
           <tbody>
@@ -49,7 +49,6 @@ const Missions = () => {
           </tbody>
         </table>
       )}
-      ;
     </div>
   );
 };
