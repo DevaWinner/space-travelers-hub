@@ -1,70 +1,56 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const initialState = {
-  data: [],
-  status: 'idle',
-  error: null,
-};
+const rocketAPI = 'https://api.spacexdata.com/v3/Rockets';
+export const fetchRockets = createAsyncThunk(
+  'rockets/fetchRockets API Data',
+  async () => {
+    const response = await axios.get(rocketAPI);
+    return response.data;
+  },
+);
+/* eslint-disable max-len */
+const rocketReducer = createSlice({
+  name: 'RocketSlice',
+  initialState: {
+    rocketArr: [],
+    isLoading: false,
+    error: null,
+    isDataFetched: false,
+  },
+  reducers: {
+    addBooking: (state, action) => {
+      const updatedRocketArr = state.rocketArr.map((object) => (object.id === action.payload ? { ...object, reserved: false } : object));
 
-export const fetchRocketsData = createAsyncThunk('rockets/fetchData', async () => {
-  try {
-    const response = await axios.get('https://api.spacexdata.com/v3/rockets');
-    const rocketsData = response.data.map((rocket) => ({
-      id: rocket.id,
-      name: rocket.rocket_name,
-      description: rocket.description,
-      flickr_images: rocket.flickr_images,
-      reserved: false,
-    }));
-    return rocketsData;
-  } catch (error) {
-    throw new Error('Unable to fetch data for the rockets');
-  }
-});
+      return { ...state, rocketArr: updatedRocketArr };
+    },
+    leaveBooking: (state, action) => {
+      const updatedRocketArr = state.rocketArr.map((object) => (object.id === action.payload ? { ...object, reserved: true } : object));
 
-export const reserveRocket = createAsyncThunk('rockets/reserve', async (rocketId, { getState }) => {
-  const state = getState();
-  const newState = state.rockets.data.map((rocket) => {
-    if (rocket.id !== rocketId) return rocket;
-    return { ...rocket, reserved: true };
-  });
-  return newState;
-});
-
-export const cancelReservation = createAsyncThunk('rockets/cancelReservation', async (rocketId, { getState }) => {
-  const state = getState();
-  const newState = state.rockets.data.map((rocket) => {
-    if (rocket.id !== rocketId) return rocket;
-    return { ...rocket, reserved: false };
-  });
-  return newState;
-});
-
-const rocketsSlice = createSlice({
-  name: 'rockets',
-  initialState,
-  reducers: {},
+      return { ...state, rocketArr: updatedRocketArr };
+    },
+  },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchRocketsData.pending, (state) => {
-        state.status = 'loading';
+      .addCase(fetchRockets.pending, (state) => {
+        state.isLoading = true;
       })
-      .addCase(fetchRocketsData.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.data = action.payload;
+      .addCase(fetchRockets.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.rocketArr = action.payload.map((rocketItems) => ({
+          id: rocketItems.id,
+          rocket_name: rocketItems.rocket_name,
+          description: rocketItems.description,
+          flickr_images: rocketItems.flickr_images,
+        }));
+        state.isDataFetched = true;
       })
-      .addCase(fetchRocketsData.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      })
-      .addCase(reserveRocket.fulfilled, (state, action) => {
-        state.data = action.payload;
-      })
-      .addCase(cancelReservation.fulfilled, (state, action) => {
-        state.data = action.payload;
+      .addCase(fetchRockets.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error;
       });
   },
 });
 
-export default rocketsSlice.reducer;
+export const { addBooking, leaveBooking } = rocketReducer.actions;
+export default rocketReducer.reducer;

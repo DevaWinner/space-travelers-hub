@@ -1,0 +1,44 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+// import './styles/Nav.css';
+import logo from '../Assets/logo.png';
+
+const Nav = () => (
+  <>
+    <nav className="navbar">
+      <NavLink
+        to="/"
+      >
+        <header className="navbar-header">
+          <img src={logo} alt="Logo" />
+          <h1 className="nav-heading">Space Travelers Hub</h1>
+        </header>
+      </NavLink>
+      <ul className="nav-ul">
+        <li className="nav-li">
+          <NavLink
+            to="/"
+          >
+            Rockets
+          </NavLink>
+        </li>
+        <li className="nav-li">
+          <NavLink
+            to="/missions"
+          >
+            Missions
+          </NavLink>
+        </li>
+        <li className="nav-li">
+          <NavLink
+            to="/profile"
+          >
+            My Profile
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  </>
+);
+
+export default Nav;
