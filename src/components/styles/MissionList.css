@@ -8,6 +8,8 @@
 .missions-table th {
   font-size: 1.2rem;
   font-weight: 700;
+  background-color: var(--blue);
+  color: #fff;
 }
 
 .missions-table th,
@@ -15,11 +17,6 @@
   padding: 1rem;
   text-align: left;
   border: 2px solid #ddd;
-}
-
-.missions-table th {
-  background-color: var(--blue);
-  color: #fff;
 }
 
 .missions-table tr:nth-child(even) {
