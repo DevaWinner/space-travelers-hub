@@ -1,0 +1,77 @@
+.missions-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+.missions-table th {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background-color: var(--blue);
+  color: #fff;
+}
+
+.missions-table th,
+.missions-table td {
+  padding: 1rem;
+  text-align: left;
+  border: 2px solid #ddd;
+}
+
+.missions-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.mission-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.btn-td {
+  width: 8%;
+}
+
+.active-member-badge {
+  display: block;
+  text-align: center;
+  padding: 0.2rem 1rem;
+  background-color: var(--green);
+  color: #fff;
+  border-radius: 0.5rem;
+  font-weight: 700;
+}
+
+.inactive-member-badge {
+  display: block;
+  text-align: center;
+  padding: 0.2rem 1rem;
+  background-color: gray;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 700;
+}
+
+.join-button {
+  display: block;
+  text-align: center;
+  padding: 0.2rem 1rem;
+  background-color: var(--blue);
+  border: 3px solid var(--blue);
+  color: #fff;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.leave-button {
+  display: block;
+  text-align: center;
+  padding: 0.2rem 1rem;
+  background-color: #fff;
+  border: 3px solid var(--blue);
+  color: var(--blue);
+  border-radius: 0.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
