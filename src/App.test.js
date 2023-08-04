@@ -10,6 +10,6 @@ test('renders App', () => {
       <Router>
         <App />
       </Router>
-    </Provider>
+    </Provider>,
   );
 });
