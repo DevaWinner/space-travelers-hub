@@ -1,10 +1,6 @@
-p {
-  font-size: 16px;
-}
-
-* {
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
-  font-family: 'Lato', sans-serif;
+.main {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
 }

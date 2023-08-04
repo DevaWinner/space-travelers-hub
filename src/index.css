@@ -1,3 +1,18 @@
-p {
-  font-size: 16px;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Montserrat:wght@400;700;800&family=Outfit:wght@200;300;400;500;600;700;800&family=Roboto+Slab:wght@100;200;300;500;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #000;
+  --blue: #064380;
+  --dark-blue: #072949;
+  --green: #2dccb2;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
 }
