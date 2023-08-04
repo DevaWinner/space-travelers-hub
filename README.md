@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <img src="./src/Assets/logo.png" alt="logo" width="140"  height="auto" />
+  <img src="./src/assets/logo.png" alt="logo" width="140"  height="auto" />
   <br/>
 
   <h3><b>Space Travellers Hub</b></h3>
@@ -53,6 +53,8 @@
 
 ### Key Features <a name="key-features"></a>
 
+- **[Rockets_page]**
+- **[Missions_page]**
 - **[Add_reservation_for_rockets]**
 - **[Cancel_reservation_for_rockets]**
 - **[Join_space_mission]**
@@ -151,13 +153,6 @@ Your app is ready to be deployed!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- FUTURE FEATURES -->
-
-## 🔭 Future Features <a name="future-features"></a>
-
-- [ ] **[Rockets_data_on_profile_page]**
-- [ ] **[Missions_data_on_profile_page]**
-- [ ] **[Dragons_page]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
