@@ -48,4 +48,30 @@ describe('RocketList', () => {
     expect(reserveButton).toBeInTheDocument();
   });
 
+  it('renders cancel button when rocket is reserved', () => {
+    store = mockStore({
+      rockets: {
+        rockets: [
+          {
+            id: 1,
+            flickr_images: ['https://www.example.com/image.jpg'],
+            rocket_name: 'Falcon 9',
+            description: 'A reusable rocket for space missions',
+            reserved: true,
+          },
+        ],
+      },
+    });
+
+    component.rerender(
+      <Provider store={store}>
+        <RocketList rocket={store.getState().rockets.rockets[0]} />
+      </Provider>,
+    );
+
+    const cancelButton = component.getByText('Cancel Reservation');
+
+    expect(cancelButton).toBeInTheDocument();
+  });
+
 });
