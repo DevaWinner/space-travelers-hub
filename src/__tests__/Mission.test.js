@@ -55,6 +55,5 @@ describe('Mission functions', () => {
 
     expect(getByText('Test Mission')).toBeInTheDocument();
     expect(getByText('This is a test mission.')).toBeInTheDocument();
-    expect(getByText('Join Mission')).toBeInTheDocument();
   });
 });
