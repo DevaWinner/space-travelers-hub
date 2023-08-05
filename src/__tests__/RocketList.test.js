@@ -41,4 +41,11 @@ describe('RocketList', () => {
     expect(rocketName).toBeInTheDocument();
     expect(rocketDescription).toBeInTheDocument();
   });
+
+  it('renders reserve button when rocket is not reserved', () => {
+    const reserveButton = component.getByText('Reserve Rocket');
+
+    expect(reserveButton).toBeInTheDocument();
+  });
+
 });
