@@ -47,4 +47,14 @@ describe('Mission functions', () => {
 
     expect(handleLeaveMissionMock).toHaveBeenCalledWith(dummyMission.mission_id);
   });
+
+  it('renders correctly', () => {
+    const { getByText } = renderWithProvider(
+      <Mission mission={dummyMission} handleJoinMission={() => {}} handleLeaveMission={() => {}} />,
+    );
+
+    expect(getByText('Test Mission')).toBeInTheDocument();
+    expect(getByText('This is a test mission.')).toBeInTheDocument();
+    expect(getByText('Join Mission')).toBeInTheDocument();
+  });
 });
