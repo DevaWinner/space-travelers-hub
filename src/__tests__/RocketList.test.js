@@ -74,4 +74,12 @@ describe('RocketList', () => {
     expect(cancelButton).toBeInTheDocument();
   });
 
+  it('dispatches addBooking when reserve button is clicked', () => {
+    const reserveButton = component.getByText('Reserve Rocket');
+
+    fireEvent.click(reserveButton);
+
+    expect(store.getActions()).toEqual([{ type: 'RocketSlice/leaveBooking', payload: 1 }]);
+  });
+
 });
