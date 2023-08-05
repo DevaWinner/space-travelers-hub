@@ -82,4 +82,31 @@ describe('RocketList', () => {
     expect(store.getActions()).toEqual([{ type: 'RocketSlice/leaveBooking', payload: 1 }]);
   });
 
+  it('dispatches leaveBooking when cancel button is clicked', () => {
+    store = mockStore({
+      rockets: {
+        rockets: [
+          {
+            id: 1,
+            flickr_images: ['https://www.example.com/image.jpg'],
+            rocket_name: 'Falcon 9',
+            description: 'A reusable rocket for space missions',
+            reserved: true,
+          },
+        ],
+      },
+    });
+
+    component.rerender(
+      <Provider store={store}>
+        <RocketList rocket={store.getState().rockets.rockets[0]} />
+      </Provider>,
+    );
+
+    const cancelButton = component.getByText('Cancel Reservation');
+
+    fireEvent.click(cancelButton);
+
+    expect(store.getActions()).toEqual([{ type: 'RocketSlice/addBooking', payload: 1 }]);
+  });
 });
