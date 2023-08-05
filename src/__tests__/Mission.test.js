@@ -66,4 +66,14 @@ describe('Mission functions', () => {
 
     expect(getByText('Leave Mission')).toBeInTheDocument();
   });
+
+  it('renders correctly when not reserved', () => {
+    dummyMission.reserved = false;
+
+    const { getByText } = renderWithProvider(
+      <Mission mission={dummyMission} handleJoinMission={() => {}} handleLeaveMission={() => {}} />,
+    );
+
+    expect(getByText('Join Mission')).toBeInTheDocument();
+  });
 });
