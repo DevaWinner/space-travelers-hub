@@ -1,11 +1,9 @@
-// Import the required libraries and components
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import RocketList from '../components/rockets/RocketList';
 
-// Create a mock store using redux-mock-store
 const mockStore = configureStore([]);
 
 describe('RocketList', () => {

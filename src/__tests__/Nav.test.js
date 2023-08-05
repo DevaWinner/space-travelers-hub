@@ -7,7 +7,7 @@ test('renders Nav component', () => {
   render(
     <BrowserRouter>
       <Nav />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
   const linkElement = screen.getByText(/Space Travelers' Hub/i);
   expect(linkElement).toBeInTheDocument();
